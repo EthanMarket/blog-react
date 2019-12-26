@@ -10,16 +10,18 @@
 
 ### 二、项目预览：
 * 首页
-	* ![](https://github.com/EthanMarket/blog-react-admin/raw/master/images/article.png)
+	* ![](https://github.com/EthanMarket/blog-react/raw/master/images/home.png)
 * 目录
-	* ![](https://github.com/EthanMarket/blog-react-admin/raw/master/images/article-create.png) 
+	* ![](https://github.com/EthanMarket/blog-react/raw/master/images/directory.png)
 * 项目
-	* ![](https://github.com/EthanMarket/blog-react-admin/raw/master/images/article-create.png) 
+	*  ![](https://github.com/EthanMarket/blog-react/raw/master/images/project.png)
 * 关于
-	* ![](https://github.com/EthanMarket/blog-react-admin/raw/master/images/project.png) 
+	*  ![](https://github.com/EthanMarket/blog-react/raw/master/images/about.png)
+* 详情
+	* ![](https://github.com/EthanMarket/blog-react/raw/master/images/detail.png) 
 ### 二、主要功能：
 ####  1、`src/HomeRouters`目录
- *	[`HomeRouters.js`](https://github.com/EthanMarket/blog-react-admin/blob/master/config/blogRouters.js) //项目路由目录，整个项目的页面路由
+ *	[`HomeRouters.js`](https://github.com/EthanMarket/blog-react/blob/master/src/HomeRouters/index.tsx) //项目路由目录，整个项目的页面路由
 
 -`SimpleCode：`
 
