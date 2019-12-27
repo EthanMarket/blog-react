@@ -2,6 +2,7 @@ import * as React from 'react';
 import userLogo from '../../assets/img/userLogo.jpeg'
 import { Tag } from 'antd';
 import './index.less'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { IInfoProps } from './index.interface'
@@ -11,7 +12,17 @@ interface checkItem {
   _id: string,
   name: string
 }
-class Info extends React.Component<IInfoProps> {
+interface ILocation {
+  pathname: string
+}
+interface IHistory {
+  push: (pathname: string) => void
+}
+interface Iprops extends IInfoProps{
+  history: IHistory,
+  location: ILocation,
+}
+class Info extends React.Component<Iprops> {
   public componentDidMount() {
     this.props.getTagList()
     this.props.getCategoryList()
@@ -23,10 +34,12 @@ class Info extends React.Component<IInfoProps> {
    */
   private checkedTag(item: checkItem) {
     const tag_id = this.props.info.tag_id === item._id ? '' : item._id
+    this.props.history.push('/')
     this.props.setInfoState({ tag_id })
   }
   private checkedCategory(item: checkItem) {
     const category_id = this.props.info.category_id === item._id ? '' : item._id
+    this.props.history.push('/')
     this.props.setInfoState({ category_id })
   }
 
@@ -40,7 +53,9 @@ class Info extends React.Component<IInfoProps> {
           className='item-tag'
           key={_id}
           checked={_id === category_id}
-          onChange={() => this.checkedCategory(item)}>{name}</CheckableTag>
+          onChange={() => this.checkedCategory(item)}>
+            {name}
+        </CheckableTag>
       )
     })
   }
@@ -101,4 +116,5 @@ const mapStateToProps = (state: IInfoProps) => ({
   info: state.info,
 })
 const mapDispatchToProps = (dispatch: any) => ({ ...bindActionCreators(actions, dispatch) })
-export default connect(mapStateToProps, mapDispatchToProps)(Info)
+const InfoWrap: any = Info
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(InfoWrap))

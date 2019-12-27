@@ -39,6 +39,7 @@
 	    "store": "^2.0.12",
     	"typescript": "3.7.2"
   	}
+
 ####  2、`src/HomeRouters`目录
  *	[`HomeRouters.js`](https://github.com/EthanMarket/blog-react/blob/master/src/HomeRouters/index.tsx) //项目路由目录，整个项目的页面路由
 

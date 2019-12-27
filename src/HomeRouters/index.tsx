@@ -1,4 +1,4 @@
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect ,Switch} from 'react-router-dom'
 import HeaderNav from '../components/HeaderNav'
 import Loadable from 'react-loadable';
 import loading from '../components/Loading'
@@ -32,7 +32,6 @@ const routerList: any[] = [
 ]
 
 export function HomeRouter(props: any) {
-  console.log(props.location.pathname);
   const path = props.location.pathname.toString()
   const detail = path.search('articledetail') === -1
   return (
@@ -41,6 +40,7 @@ export function HomeRouter(props: any) {
       <Layout >
         <div >
           <div className='blog-container'>
+          <Switch>
             <div className='blog-content'>
               {routerList.map(item => {
                 const { path, component } = item
@@ -62,12 +62,11 @@ export function HomeRouter(props: any) {
                 component={ArticleDetail}
               />
             </div>
+            </Switch>
             {detail ? <div className='blog-info'>
               <Info />
             </div> : null}
-
           </div>
-
           <Footer style={{ textAlign: 'center', background: '#fff' }}>
             Copyright © Hi,Ethan 2019
         </Footer>

@@ -2,8 +2,6 @@ export function timeToLocal(inputTime: string) {
   if (!inputTime && typeof inputTime !== 'number') {
     return '';
   }
-  console.log(inputTime);
-
   let localTime = '';
   let longTime = new Date(inputTime).getTime();
   const offset = (new Date()).getTimezoneOffset();

@@ -16,12 +16,14 @@ class Home extends React.Component<IHomeProps> {
 
   public componentDidMount() {
     this.props.setHomeListState({ loading: true })
+    const { tag_id, category_id } = this.props.info
     this.props.getHomeList({
       keyword: "",
       likes: "",
       pageNum: 0,
       state: 1,
-      tag_id: ""
+      tag_id,
+      category_id
     })
 
     window.onscroll = () => {
