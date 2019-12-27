@@ -1,18 +1,17 @@
 import axios from 'axios';
 import { message } from 'antd';
-
+// 创建axios实例
+let service = null;
 if (process.env.NODE_ENV === 'development') {
-    axios.create({
+    service=  axios.create({
         baseURL: '/api', // api的base_url
         timeout: 50000, // 请求超时时间
-        withCredentials: true
     });
 } else {
     // 生产环境下
-    axios.create({
+    service=  axios.create({
         baseURL: '/api', // api的base_url
         timeout: 50000, // 请求超时时间
-        withCredentials: true
     });
 }
 message.config({
@@ -34,8 +33,8 @@ const onResponseError = (response) => {
     return response
 };
 
-axios.interceptors.request.use(onRequestSuccess);
-axios.interceptors.response.use(onResponseError);
+service.interceptors.request.use(onRequestSuccess);
+service.interceptors.response.use(onResponseError);
 
 export default function (path = '', data = {}, type = 'GET') {
     if (type === 'GET') {
@@ -48,9 +47,9 @@ export default function (path = '', data = {}, type = 'GET') {
         if (pathParam) {
             path += "?" + pathParam.substring(0, pathParam.length - 1)
         }
-        return axios.get(path)
+        return service.get(path)
     } else {
         // 发送 post 请求
-        return axios.post(path, data) // data: 包含请求体数据的对象
+        return service.post(path, data) // data: 包含请求体数据的对象
     }
 }
