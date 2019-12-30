@@ -10,6 +10,7 @@ import * as actions from '../../redux/articleDetail/action'
 import Comment from './Comment'
 import { IDetailProps } from './index.interface'
 import { bindActionCreators } from 'redux';
+import 'highlight.js/styles/github.css';
 const { TextArea } = Input;
 class ArticleDetail extends React.Component<IDetailProps> {
   componentDidMount() {
@@ -94,15 +95,8 @@ class ArticleDetail extends React.Component<IDetailProps> {
     const { content, toc, title, meta } = articleDetail
     return (
       <div className='article-container' style={{ minHeight: window.innerHeight }}>
-        <div
-          style={{ width: '20%' }}
-          className="quick-nav"
-          dangerouslySetInnerHTML={{
-            __html: toc ? toc : '',
-          }}
-        />
-        <div className="article-title">{title}</div>
-        <div >
+        <div className='detail-main'>
+          <div className="article-title">{title}</div>
           <div className='detail-content'>
             {this.renderHeader()}
             {isLoading ? <Loading /> : ''}
@@ -134,7 +128,16 @@ class ArticleDetail extends React.Component<IDetailProps> {
             </div>
             {this.renderCommentComponent()}
           </div>
-
+        </div>
+        <div
+          style={{ width: '20%' }}
+          className="quick-nav">
+          <div
+            className='quick-toc'
+            dangerouslySetInnerHTML={{
+              __html: toc ? toc : '',
+            }}
+          />
         </div>
       </div>
     );
